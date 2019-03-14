@@ -1,7 +1,8 @@
-package com.rodak.partyshaker
+package com.rodak.partyshaker.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.rodak.partyshaker.R
 
 class MainActivity : AppCompatActivity() {
 
