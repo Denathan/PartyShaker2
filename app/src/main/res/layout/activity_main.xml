@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/appCompatImageView2"
         android:layout_width="match_parent"
@@ -27,7 +32,7 @@
         android:background="@color/colorBackground" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView4"
+        android:id="@+id/favoritesBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -37,10 +42,10 @@
         app:layout_constraintEnd_toEndOf="@+id/appCompatImageView"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="@+id/appCompatImageView"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView5" />
+        app:layout_constraintTop_toBottomOf="@+id/historyBtn" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView7"
+        android:id="@+id/allBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -50,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="@+id/appCompatImageView"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="@+id/appCompatImageView"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView4" />
+        app:layout_constraintTop_toBottomOf="@+id/favoritesBtn" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/appCompatImageView"
@@ -66,7 +71,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView"
+        android:id="@+id/searchBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -78,20 +83,20 @@
         app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView6"
+        android:id="@+id/randomBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="RANDOM COCTAIL"
+        android:text="RANDOM COCKTAIL"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/appCompatImageView"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="@+id/appCompatImageView"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/searchBtn" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView5"
+        android:id="@+id/historyBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -100,6 +105,6 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/appCompatImageView"
         app:layout_constraintStart_toStartOf="@+id/appCompatImageView"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView6" />
+        app:layout_constraintTop_toBottomOf="@+id/randomBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
