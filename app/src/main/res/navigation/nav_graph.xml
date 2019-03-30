@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/allFragment">
+    app:startDestination="@id/menuFragment">
 
     <fragment
         android:id="@+id/allFragment"
@@ -34,4 +34,25 @@
         android:id="@+id/mainActivity"
         android:name="com.rodak.partyshaker.main.MainActivity"
         android:label="MainActivity" />
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.rodak.partyshaker.MenuFragment"
+        android:label="menu_fragment"
+        tools:layout="@layout/menu_fragment" >
+        <action
+            android:id="@+id/action_menuFragment_to_allFragment"
+            app:destination="@id/allFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_randomFragment"
+            app:destination="@id/randomFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
 </navigation>
