@@ -36,5 +36,5 @@ object Apifactory {
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
 
-    val tmdbApi: CocktailApi = retrofit().create(CocktailApi::class.java)
+    val cocktailApi: CocktailApi = retrofit().create(CocktailApi::class.java)
 }
