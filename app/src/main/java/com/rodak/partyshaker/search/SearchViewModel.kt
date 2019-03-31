@@ -24,7 +24,7 @@ class SearchViewModel : ViewModel() {
     private val repository: CocktailsRepository = CocktailsRepository(Apifactory.cocktailApi)
 
     val drinksLiveData = MutableLiveData<MutableList<Drink>>()
-    
+
     fun fetchDrinks() {
         scope.launch {
             val drinks = repository.getDrinks("vodka")
