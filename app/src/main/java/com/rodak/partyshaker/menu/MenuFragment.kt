@@ -1,11 +1,12 @@
 package com.rodak.partyshaker.menu
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.rodak.partyshaker.R
 import kotlinx.android.synthetic.main.menu_fragment.allBtn
@@ -33,11 +34,22 @@ class MenuFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MenuViewModel::class.java)
 
-        favoritesBtn.setOnClickListener { displayFragment(R.id.action_menuFragment_to_favoritesFragment) }
-        randomBtn.setOnClickListener { displayFragment(R.id.action_menuFragment_to_randomFragment) }
-        historyBtn.setOnClickListener { displayFragment(R.id.action_menuFragment_to_historyFragment) }
-        searchBtn.setOnClickListener { displayFragment(R.id.action_menuFragment_to_searchFragment) }
-        allBtn.setOnClickListener { displayFragment(R.id.action_menuFragment_to_allFragment) }
+        initButtons()
+        initObservers()
+    }
+
+    private fun initButtons() {
+        favoritesBtn.setOnClickListener { viewModel.showFragment(R.id.action_menuFragment_to_favoritesFragment) }
+        randomBtn.setOnClickListener { viewModel.showFragment(R.id.action_menuFragment_to_randomFragment) }
+        historyBtn.setOnClickListener { viewModel.showFragment(R.id.action_menuFragment_to_historyFragment) }
+        searchBtn.setOnClickListener { viewModel.showFragment(R.id.action_menuFragment_to_searchFragment) }
+        allBtn.setOnClickListener { viewModel.showFragment(R.id.action_menuFragment_to_allFragment) }
+    }
+
+    private fun initObservers() {
+        viewModel.searchFragment.observe(this, Observer {
+            displayFragment(it)
+        })
     }
 
     private fun displayFragment(id: Int) {
