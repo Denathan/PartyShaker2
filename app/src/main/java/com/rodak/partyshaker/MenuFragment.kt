@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.menu_fragment.allBtn
 import kotlinx.android.synthetic.main.menu_fragment.favoritesBtn
@@ -33,10 +32,14 @@ class MenuFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MenuViewModel::class.java)
 
-        favoritesBtn.setOnClickListener { findNavController().navigate(R.id.action_menuFragment_to_favoritesFragment) }
-        randomBtn.setOnClickListener { findNavController().navigate(R.id.action_menuFragment_to_randomFragment) }
-        historyBtn.setOnClickListener { findNavController().navigate(R.id.action_menuFragment_to_historyFragment) }
-        searchBtn.setOnClickListener { findNavController().navigate(R.id.action_menuFragment_to_searchFragment) }
-        allBtn.setOnClickListener { findNavController().navigate(R.id.action_menuFragment_to_allFragment) }
+        favoritesBtn.setOnClickListener { displayFragment(R.id.action_menuFragment_to_favoritesFragment) }
+        randomBtn.setOnClickListener { displayFragment(R.id.action_menuFragment_to_randomFragment) }
+        historyBtn.setOnClickListener { displayFragment(R.id.action_menuFragment_to_historyFragment) }
+        searchBtn.setOnClickListener { displayFragment(R.id.action_menuFragment_to_searchFragment) }
+        allBtn.setOnClickListener { displayFragment(R.id.action_menuFragment_to_allFragment) }
+    }
+
+    private fun displayFragment(id: Int) {
+        findNavController().navigate(id)
     }
 }
