@@ -1,4 +1,4 @@
-package com.rodak.partyshaker.data
+package com.rodak.partyshaker.data.local
 
 data class Drink(
     val dateModified: String,
