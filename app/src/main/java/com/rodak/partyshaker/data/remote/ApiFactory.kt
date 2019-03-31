@@ -13,7 +13,6 @@ object Apifactory {
     private val authInterceptor = Interceptor { chain ->
         val newUrl = chain.request().url()
             .newBuilder()
-            .addQueryParameter("api_key", API_KEY)
             .build()
 
         val newRequest = chain.request()
@@ -31,7 +30,7 @@ object Apifactory {
 
     fun retrofit(): Retrofit = Retrofit.Builder()
         .client(cocktailClient)
-        .baseUrl("https://api.themoviedb.org/3/")
+        .baseUrl("https://www.thecocktaildb.com/api/json/v1/$API_KEY/")
         .addConverterFactory(MoshiConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
