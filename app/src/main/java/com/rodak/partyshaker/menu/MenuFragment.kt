@@ -1,4 +1,4 @@
-package com.rodak.partyshaker
+package com.rodak.partyshaker.menu
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.rodak.partyshaker.R
 import kotlinx.android.synthetic.main.menu_fragment.allBtn
 import kotlinx.android.synthetic.main.menu_fragment.favoritesBtn
 import kotlinx.android.synthetic.main.menu_fragment.historyBtn

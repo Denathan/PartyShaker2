@@ -1,4 +1,4 @@
-package com.rodak.partyshaker
+package com.rodak.partyshaker.menu
 
 import androidx.lifecycle.ViewModel
 

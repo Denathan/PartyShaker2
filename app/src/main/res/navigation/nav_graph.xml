@@ -36,7 +36,7 @@
         android:label="MainActivity" />
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.rodak.partyshaker.MenuFragment"
+        android:name="com.rodak.partyshaker.menu.MenuFragment"
         android:label="menu_fragment"
         tools:layout="@layout/menu_fragment" >
         <action
