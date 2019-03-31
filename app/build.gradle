@@ -15,7 +15,13 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            buildConfigField 'String', "ApiKey", PartyShaker2_CocktailDbKey
+            resValue 'string', "api_key", PartyShaker2_CocktailDbKey
+        }
         release {
+            buildConfigField 'String', "ApiKey", PartyShaker2_CocktailDbKey
+            resValue 'string', "api_key", PartyShaker2_CocktailDbKey
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -51,7 +57,7 @@ dependencies {
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
 
     implementation "com.squareup.moshi:moshi-kotlin:1.8.0"
-    
+
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.0-alpha'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.2.0-alpha"
 
