@@ -1,6 +1,7 @@
 package com.rodak.partyshaker.base
 
 import android.util.Log
+import com.rodak.partyshaker.data.remote.CocktailApi
 import retrofit2.Response
 import java.io.IOException
 
