@@ -12,6 +12,10 @@ import androidx.lifecycle.ViewModelProviders
 import com.rodak.partyshaker.R
 import kotlinx.android.synthetic.main.search_fragment.drinkNameInput
 import kotlinx.android.synthetic.main.search_fragment.foundDrinks
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SearchFragment : Fragment() {
 
@@ -39,7 +43,10 @@ class SearchFragment : Fragment() {
     private fun setupOnTextChangeListerener() {
         drinkNameInput.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                viewModel.findDrink(drinkNameInput.text.toString())
+                CoroutineScope(Dispatchers.Main).launch {
+                    delay(300)
+                    viewModel.findDrink(drinkNameInput.text.toString().trim())
+                }
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -54,8 +61,9 @@ class SearchFragment : Fragment() {
         viewModel.queryLiveData.observe(this, Observer {
             viewModel.fetchDrinks(it)
         })
-        viewModel.drinksLiveData.observe(this, Observer {
-            foundDrinks.text = it.map { it.strDrink }.toString()
+        viewModel.drinksLiveData.observe(this, Observer { drinks ->
+            foundDrinks.text =
+                drinks?.map { drink -> drink.strDrink }?.toString() ?: "There's no result!"
         })
     }
 }
