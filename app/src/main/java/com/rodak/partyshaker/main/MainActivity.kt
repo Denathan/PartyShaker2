@@ -19,8 +19,6 @@ import kotlinx.android.synthetic.main.menu_fragment.searchBtn
 
 class MainActivity : AppCompatActivity() {
 
-    private val defaultFragmentTag = "FRAGMENT_TAG"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -28,18 +26,4 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp()
         = NavHostFragment.findNavController(fragment_container).navigateUp()
-
-//    private fun displayFragment(fragment: Fragment) {
-//        supportFragmentManager.beginTransaction()
-//            .replace(R.id.fragmentContainer, fragment, defaultFragmentTag)
-//            .commit()
-//    }
-//
-//    private fun removeFragment(tag: String = defaultFragmentTag) {
-//        supportFragmentManager.findFragmentByTag(tag)?.let {
-//            supportFragmentManager.beginTransaction()
-//                .remove(it)
-//                .commit()
-//        }
-//    }
 }
