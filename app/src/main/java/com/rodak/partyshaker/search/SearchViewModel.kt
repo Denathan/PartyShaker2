@@ -24,12 +24,17 @@ class SearchViewModel : ViewModel() {
     private val repository: CocktailsRepository = CocktailsRepository(Apifactory.cocktailApi)
 
     val drinksLiveData = MutableLiveData<MutableList<Drink>>()
+    val queryLiveData = MutableLiveData<String>()
 
-    fun fetchDrinks() {
+    fun fetchDrinks(query: String) {
         scope.launch {
-            val drinks = repository.getDrinks("vodka")
+            val drinks = repository.getDrinks(query)
             drinksLiveData.postValue(drinks)
         }
+    }
+
+    fun findDrink(query: String) {
+        queryLiveData.postValue(query)
     }
 
     fun cancelRequests() = coroutineContext.cancel()
