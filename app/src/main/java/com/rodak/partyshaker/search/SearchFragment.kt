@@ -8,6 +8,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -18,6 +19,7 @@ import com.rodak.partyshaker.search.recyclerview.FoundCocktailsAdapter
 import kotlinx.android.synthetic.main.search_fragment.drinkNameInput
 import kotlinx.android.synthetic.main.search_fragment.errorText
 import kotlinx.android.synthetic.main.search_fragment.foundCocktailsList
+import kotlinx.android.synthetic.main.search_fragment.searchProgress
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -52,6 +54,12 @@ class SearchFragment : Fragment() {
         initObservers()
     }
 
+    override fun onResume() {
+        super.onResume()
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+    }
+
+    // TODO better state management
     private fun setupOnTextChangeListerener() {
         drinkNameInput.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -59,6 +67,7 @@ class SearchFragment : Fragment() {
                     delay(300)
                     viewModel.findDrink(drinkNameInput.text.toString().trim())
                 }
+                searchProgress.visibility = View.VISIBLE
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -74,7 +83,7 @@ class SearchFragment : Fragment() {
             viewModel.fetchDrinks(it)
         })
         viewModel.drinksLiveData.observe(this, Observer { drinks ->
-            handleReceivedData(drinks)
+            handleReceivedData(drinks ?: null)
         })
     }
 
@@ -87,10 +96,15 @@ class SearchFragment : Fragment() {
         }
     }
 
-    private fun handleReceivedData(drinks: MutableList<Drink>) {
-        if (drinks.isEmpty()) {
+    // TODO something is wrong with displaying list
+    private fun handleReceivedData(drinks: MutableList<Drink>?) {
+        if (drinks == null) {
+            searchProgress.visibility = View.GONE
+//            resultsAdapter.foundCocktails = listOf()
             errorText.visibility = View.VISIBLE
         } else {
+            searchProgress.visibility = View.GONE
+            errorText.visibility = View.GONE
             resultsAdapter.foundCocktails = drinks
         }
     }
