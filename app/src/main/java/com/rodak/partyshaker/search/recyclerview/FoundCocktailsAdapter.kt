@@ -11,7 +11,7 @@ import com.rodak.partyshaker.data.local.Drink
 class FoundCocktailsAdapter(private val context: Context) :
     RecyclerView.Adapter<FoundCocktailsViewHolder>() {
 
-    val foundCocktails = listOf<Drink>()
+    var foundCocktails = listOf<Drink>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoundCocktailsViewHolder {
         return FoundCocktailsViewHolder(
