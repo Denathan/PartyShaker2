@@ -1,13 +1,18 @@
 package com.rodak.partyshaker.menu
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.rodak.partyshaker.tools.SingleDataEvent
 
 class MenuViewModel : ViewModel() {
 
-    val searchFragment = MutableLiveData<Int>()
+    private val searchFragmentData = MutableLiveData<SingleDataEvent<Int>>()
+
+    val searchFragment: LiveData<SingleDataEvent<Int>>
+        get() = searchFragmentData
 
     fun showFragment(fragmentId: Int) {
-        searchFragment.postValue(fragmentId)
+        searchFragmentData.postValue(SingleDataEvent(fragmentId))
     }
 }

@@ -47,8 +47,8 @@ class MenuFragment : Fragment() {
     }
 
     private fun initObservers() {
-        viewModel.searchFragment.observe(this, Observer {
-            displayFragment(it)
+        viewModel.searchFragment.observe(this, Observer { fragmentIdEvent ->
+            fragmentIdEvent.getContentIfNotHandled()?.let { displayFragment(it) }
         })
     }
 
